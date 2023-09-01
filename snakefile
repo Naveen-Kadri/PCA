@@ -17,7 +17,7 @@ chromosomes=range (1,30)
 
 rule all:
     input:
-        expand(OUT_DIR + '/GENOME/genome.{ext}',ext=['eigenvec', 'eigenvalues'])
+        expand(OUT_DIR + '/GENOME/genome.{ext}',ext=['eigenvec', 'eigenval'])
 
 rule make_bed:
     input:
@@ -105,7 +105,7 @@ rule pca:
         prefix=lambda wc,input:input.grm[0][:-7],
         npc=20
     output:
-        pca=expand(OUT_DIR + '/GENOME/genome.{ext}',ext=['eigenvec', 'eigenvalues'])
+        pca=expand(OUT_DIR + '/GENOME/genome.{ext}',ext=['eigenvec', 'eigenval'])
     resources:
         mem_mb=8000,
         walltime='24:00:00'
