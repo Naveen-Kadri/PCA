@@ -117,6 +117,6 @@ rule pca:
         --grm {params.prefix} \
         --pca {params.npc} \
         --out {params.prefix} \
-        --threads {threads} \
+        --threads {threads} 
         '''
 
