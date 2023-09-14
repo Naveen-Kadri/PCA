@@ -85,17 +85,13 @@ rule merge_grms:
     params:
         prefix=lambda wc,output:output.grm[0][:-7]
     resources:
-        mem_mb=180000,
+        mem_mb=90000,
         walltime='24:00:00'
     threads:
-        1    
+        2    
     shell:
         '''
-        {GCTA}  --autosome-num 29 \ 
-        --mgrm {input.grm_list} \
-        --make-grm \
-        --out {params.prefix} \
-        --threads {threads}
+        {GCTA}  --autosome-num 29 --mgrm {input.grm_list} --make-grm --out {params.prefix} --threads {threads}
         '''
         
 rule pca:
@@ -113,10 +109,6 @@ rule pca:
         20    
     shell:
         '''
-        {GCTA}  --autosome-num 29 \ 
-        --grm {params.prefix} \
-        --pca {params.npc} \
-        --out {params.prefix} \
-        --threads {threads} 
+        {GCTA}  --autosome-num 29 --grm {params.prefix} --pca {params.npc} --out {params.prefix} --threads {threads} 
         '''
 
